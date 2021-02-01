@@ -69,7 +69,13 @@ void BLEServiceChain::pastBleInit(){
 }
 
 void BLEServiceChain::initCustomGattServices(){
-    if(this->service == NULL) return;
+    // printf("[bleServiceChain] initCustomGattServices\r\n");
+    if(this->service == NULL) {
+        printf("[bleServiceChain] ERROR no entry in chain");
+        return;
+    }
+    this->service->initCharacteristics();
+    this->service->initService();
     BLE &ble = BLE::Instance();
     ble.gattServer().addService(*this->service->getGattService());
 
