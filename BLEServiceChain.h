@@ -23,8 +23,8 @@ public:
 
 private:
 
-    BLEService *service;
-    BLEServiceChain *next;
+    BLEService *service{nullptr};
+    BLEServiceChain *next{nullptr};
 
 };
 
